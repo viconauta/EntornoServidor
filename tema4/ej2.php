@@ -5,10 +5,30 @@
         ["Alumno" => "Benito", "Matematicas" => 9, "Lengua" => 6.75, "Ciencia Naturales" => 9, "Geografia" => 3.1]
     ];
 
+    echo "<style>
+            table {
+                border-collapse: collapse;
+            }
+            tr:first-child {
+                background-color: blueviolet;
+            }
+            tr:nth-child(even) {
+                background-color: rgb(180, 180, 180);
+            }
+            td {
+                text-align: center;
+            }
+            td:first-child {
+                background-color: blueviolet;
+                color: white;
+                text-align: left;
+            }
+        </style>";
+
     $nombre = "Antonio";
 
     function cabeceraTabla(): void {
-        echo "<table border=1>
+        echo "<table>
                 <tr>
                     <td>Alumno</td>
                     <td>Matematicas</td>
@@ -40,7 +60,7 @@
 
     cabeceraTabla();
     for($i = 0; $i < count($grupo); $i++) {
-        if($grupo[$i]["Alumno"] == $nombre) {
+        if($grupo[$i]["Alumno"] === $nombre) {
             echo "<tr>
                 <td>".$grupo[$i]["Alumno"]."</td>
                 <td>".$grupo[$i]["Matematicas"]."</td>

@@ -1,6 +1,27 @@
 <?php
     $ciudades = ["Granada" => 150000, "Madrid" => 3000000, "Barcelona" => 2879200, "Malaga" => 240000, "Sevilla" => 500000, "Valencia" => 1584600, "Tarragona" => 485210];
 
+    echo "<style>
+            table {
+                border-collapse: collapse;
+                width: 40%;
+            }
+            tr:first-child {
+                color: white;
+                background-color: rgb(0, 103, 0);
+            }
+            tr {
+                border: 2px solid rgb(0, 103, 0);
+                background-color: rgb(188, 239, 143);
+            }
+            tr:nth-child(even) {
+                background-color: white;
+            }
+            td {
+                border: none;
+            }
+        </style>";
+
     echo "<hr>Tabla normal";
     mostrarTabla($ciudades);
     for($i = 0; $i < 2; $i++) {
