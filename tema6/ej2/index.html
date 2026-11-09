@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form action="./validar.php" method="post">
+            <label for="numero">Tabla de multiplicar</label>
+            <select id="numero" name="numero">
+                <option value="1">Tabla del 1</option>
+                <option value="2">Tabla del 2</option>
+                <option value="3">Tabla del 3</option>
+                <option value="4">Tabla del 4</option>
+                <option value="5">Tabla del 5</option>
+                <option value="6">Tabla del 6</option>
+                <option value="7">Tabla del 7</option>
+                <option value="8">Tabla del 8</option>
+                <option value="9">Tabla del 9</option>
+                <option value="10">Tabla del 10</option>
+            </select>
+
+            <fieldset>
+                <legend>Color</legend>
+                <label><input type="radio" name="color" value="blanco" checked>Blanco</label>
+                <label><input type="radio" name="color" value="negro" checked>Negro</label>
+                <label><input type="radio" name="color" value="azul" checked>Azul</label>
+            </fieldset>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+</body>
+</html>
