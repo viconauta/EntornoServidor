@@ -1,19 +1,3 @@
-<?php
-$entrada = $_POST["numero"] ?? "";
-$numero = is_string($entrada)
-    ? filter_var($entrada, FILTER_VALIDATE_INT)
-    : false;
-
-
-/*
-echo "<h1>Tabla del " . $numero . "</h1>";
-echo "<table class=" . $color . ">";
-for($i = 0; $i <= 10; $i++) {
-    echo "<tr> " . $numero . " x " . $i . " = " . ($numero * $i) . "</tr>";
-}
-echo "</table>";*/
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
