@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2026 a las 21:07:18
+-- Tiempo de generación: 13-11-2026 a las 17:07:12
 -- Versión del servidor: 10.11.16-MariaDB
--- Versión de PHP: 8.5.12
+-- Versión de PHP: 8.3.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `alumnos` (
   `dni` char(9) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `edad` tinyint(4) NOT NULL CHECK (`edad` between 0 and 120)
+  `edad` tinyint(3) UNSIGNED NOT NULL CHECK (`edad` between 0 and 120)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -50,10 +50,10 @@ INSERT INTO `alumnos` (`dni`, `nombre`, `edad`) VALUES
 --
 
 CREATE TABLE `asignaturas` (
-  `codigo` int(11) NOT NULL,
+  `codigo` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `creditos` smallint(6) NOT NULL,
-  `trimestre` tinyint(4) NOT NULL
+  `creditos` smallint(5) UNSIGNED NOT NULL,
+  `trimestre` tinyint(3) UNSIGNED NOT NULL CHECK (`trimestre` between 1 and 3)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -73,9 +73,9 @@ INSERT INTO `asignaturas` (`codigo`, `nombre`, `creditos`, `trimestre`) VALUES
 
 CREATE TABLE `matriculas` (
   `dni` char(9) NOT NULL,
-  `codigo` int(11) NOT NULL,
-  `anio` smallint(6) NOT NULL,
-  `nota` decimal(4,2) default null
+  `codigo` int(10) UNSIGNED NOT NULL,
+  `anio` smallint(5) UNSIGNED NOT NULL,
+  `nota` decimal(4,2) DEFAULT NULL CHECK (`nota` between 0 and 10)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -111,6 +111,16 @@ ALTER TABLE `asignaturas`
 ALTER TABLE `matriculas`
   ADD PRIMARY KEY (`dni`,`codigo`,`anio`),
   ADD KEY `codigo` (`codigo`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `asignaturas`
+--
+ALTER TABLE `asignaturas`
+  MODIFY `codigo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
