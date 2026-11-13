@@ -75,7 +75,7 @@ CREATE TABLE `matriculas` (
   `dni` char(9) NOT NULL,
   `codigo` int(11) NOT NULL,
   `anio` smallint(6) NOT NULL,
-  `nota` decimal(4,2) NOT NULL
+  `nota` decimal(4,2) default null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
