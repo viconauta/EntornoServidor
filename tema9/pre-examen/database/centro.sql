@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2026 a las 17:07:12
+-- Tiempo de generación: 14-11-2026 a las 09:00:29
 -- Versión del servidor: 10.11.16-MariaDB
--- Versión de PHP: 8.3.36
+-- Versión de PHP: 8.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `alumnos` (
   `dni` char(9) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `edad` tinyint(3) UNSIGNED NOT NULL CHECK (`edad` between 0 and 120)
+  `edad` tinyint(4) NOT NULL CHECK (`edad` between 0 and 120)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -41,7 +41,8 @@ INSERT INTO `alumnos` (`dni`, `nombre`, `edad`) VALUES
 ('22222222B', 'María López', 21),
 ('33333333C', 'Paloma Ruiz', 24),
 ('44444444R', 'Isabel Perea', 25),
-('55555555Z', 'Ramón Torres', 19);
+('55555555Z', 'Ramón Torres', 19),
+('77777777A', 'Ana Martín', 21);
 
 -- --------------------------------------------------------
 
@@ -50,10 +51,10 @@ INSERT INTO `alumnos` (`dni`, `nombre`, `edad`) VALUES
 --
 
 CREATE TABLE `asignaturas` (
-  `codigo` int(10) UNSIGNED NOT NULL,
+  `codigo` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `creditos` smallint(5) UNSIGNED NOT NULL,
-  `trimestre` tinyint(3) UNSIGNED NOT NULL CHECK (`trimestre` between 1 and 3)
+  `creditos` smallint(6) NOT NULL,
+  `trimestre` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -73,9 +74,9 @@ INSERT INTO `asignaturas` (`codigo`, `nombre`, `creditos`, `trimestre`) VALUES
 
 CREATE TABLE `matriculas` (
   `dni` char(9) NOT NULL,
-  `codigo` int(10) UNSIGNED NOT NULL,
-  `anio` smallint(5) UNSIGNED NOT NULL,
-  `nota` decimal(4,2) DEFAULT NULL CHECK (`nota` between 0 and 10)
+  `codigo` int(11) NOT NULL,
+  `anio` smallint(6) NOT NULL,
+  `nota` decimal(4,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -111,16 +112,6 @@ ALTER TABLE `asignaturas`
 ALTER TABLE `matriculas`
   ADD PRIMARY KEY (`dni`,`codigo`,`anio`),
   ADD KEY `codigo` (`codigo`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `asignaturas`
---
-ALTER TABLE `asignaturas`
-  MODIFY `codigo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
