@@ -1,5 +1,5 @@
 <?php
-require_once '../ej1/conexion.php';
+require_once __DIR__ . '/../ej1/conexion.php';
 
 try {
     $resultado = $db->query('select nombre, edad from alumnos order by edad desc limit 2');
@@ -12,7 +12,8 @@ try {
     }
     $resultado->free();
     $db->close();
-} catch (mysqli_sql_exception $e) {
+} 
+catch (mysqli_sql_exception $e) {
     erro_log($e->getMessage());
     http_response_code(500);
     exit('No se pudo completar la operacion.');

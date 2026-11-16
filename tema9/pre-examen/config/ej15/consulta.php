@@ -39,7 +39,8 @@ try {
     $db->commit();
     $db->close();
 
-} catch(mysqli_sql_exception $e) {
+} 
+catch(mysqli_sql_exception $e) {
     $db->rollback();
     error_log($e->getMessage());
     http_response_code(500);

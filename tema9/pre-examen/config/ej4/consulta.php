@@ -19,7 +19,8 @@ try {
     $resultado->free();
     $stmt->close();
     $db->close();
-} catch(mysqli_sql_exception $e) {
+} 
+catch(mysqli_sql_exception $e) {
     error_log($e->getMessage());
     http_response_code(500);
     exit('No se pudo completar la operacion.');

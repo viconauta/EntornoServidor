@@ -3,14 +3,14 @@ require_once '../ej1/conexion.php';
 try {
     $stmt = $db->prepare('
         select a.nombre as alumno, asig.nombre as asignatura, m.anio, m.nota
-        from matriculas m
-            join alumnos a on a.dni = m.dni
-            join asignaturas asig on asig.codigo = m.codigo
-        where m.dni = ?
+        from alumnos a
+            left join matriculas m on a.dni = m.dni
+            left join asignaturas asig on asig.codigo = m.codigo
+        where a.dni = ?
         order by m.anio desc, asig.nombre;
     ');
     
-    $dni = '22222222B';
+    $dni = '44444444R';
     $stmt->bind_param('s', $dni);
     $stmt->execute();
     $resultado = $stmt->get_result();
@@ -32,7 +32,8 @@ try {
     $stmt->close();
     $db->close();
 
-} catch(mysqli_sql_exception $e) {
+} 
+catch(mysqli_sql_exception $e) {
     error_log($e->getMessage());
     http_response_code(500);
     exit('No se pudo completar la opercion.');
