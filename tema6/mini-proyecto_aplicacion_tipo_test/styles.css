@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: #edf6f3;
+    --superficie: #ffffff;
+    --texto: #18332c;
+    --texto-suave: #61766f;
+    --principal: #247a67;
+    --principal-oscuro: #195d4e;
+    --borde: #d9e7e1;
+    --correcta: #daf2e5;
+    --correcta-borde: #63a987;
+    --incorrecta: #fde5e5;
+    --incorrecta-borde: #d77a7a;
+    --radio: #c3d5ce;
+}
+
+body {
+    min-height: 100vh;
+    padding: 48px 20px;
+    background:
+        radial-gradient(circle at top left, rgba(126, 190, 170, 0.22), transparent 32rem),
+        var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+main {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 38px 42px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(217, 231, 225, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(36, 89, 74, 0.12);
+}
+
+h1 {
+    margin-bottom: 8px;
+    color: var(--texto);
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+h2 {
+    margin: 18px auto 30px;
+    padding: 12px 18px;
+    width: fit-content;
+    background: var(--principal);
+    color: #ffffff;
+    border-radius: 999px;
+    font-size: 1.1rem;
+}
+
+form {
+    margin-top: 28px;
+}
+
+.cont-pregunta {
+    margin: 18px 0;
+    padding: 22px;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.cont-pregunta:focus-within {
+    border-color: #91baa9;
+    box-shadow: 0 8px 24px rgba(36, 122, 103, 0.08);
+}
+
+.cont-pregunta > p {
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.respuesta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #415a53;
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.respuesta:hover {
+    background: #f4f8f6;
+    border-color: var(--borde);
+}
+
+.respuesta:has(input:checked) {
+    background: #edf7f3;
+    border-color: #9cc4b5;
+}
+
+.respuesta input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--principal);
+    flex: 0 0 auto;
+    cursor: pointer;
+}
+
+.respuesta label {
+    width: 100%;
+    cursor: pointer;
+}
+
+.respuesta.correcta {
+    background: var(--correcta);
+    border-color: var(--correcta-borde);
+    color: #21553f;
+}
+
+.respuesta.incorrecta {
+    background: var(--incorrecta);
+    border-color: var(--incorrecta-borde);
+    color: #7b3737;
+}
+
+.respuesta.correcta::after,
+.respuesta.incorrecta::after {
+    font-weight: 800;
+    flex: 0 0 auto;
+}
+
+.respuesta.correcta::after {
+    content: "\2713";
+}
+
+.respuesta.incorrecta::after {
+    content: "\2717";
+}
+
+button[type="submit"] {
+    display: block;
+    min-width: 220px;
+    margin: 30px auto 0;
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--principal);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(36, 122, 103, 0.22);
+    transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--principal-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 11px 22px rgba(36, 122, 103, 0.28);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+button[type="submit"]:focus-visible,
+.respuesta input:focus-visible {
+    outline: 3px solid rgba(36, 122, 103, 0.28);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    main {
+        padding: 26px 16px;
+        border-radius: 14px;
+    }
+
+    .cont-pregunta {
+        padding: 16px 12px;
+    }
+
+    .cont-pregunta > p {
+        font-size: 1rem;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}
+
